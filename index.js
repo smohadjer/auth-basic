@@ -1,7 +1,9 @@
-const readAuth = require('basic-auth');
-const safeCompare = require('safe-compare');
-const serveStatic = require('serve-static');
-import testApi from './api/index.js';
+import readAuth from 'basic-auth';
+import safeCompare from 'safe-compare';
+import serveStatic from 'serve-static';
+import testApi from './api/test.js';
+
+console.log('index.js is loaded.');
 
 const auth = (req, res) => new Promise(resolve => {
   const credentials = readAuth(req);
@@ -12,7 +14,9 @@ const auth = (req, res) => new Promise(resolve => {
 const serveHandler = serveStatic(__dirname + '/public');
 const serve = (req, res, handle404) => new Promise(() => serveHandler(req, res, handle404));
 
-const app = async (req, res) => {
+export default async (req, res) => {
+  console.log('async fn is invoked');
+
   // If requests admin area, auth user before serving files
   if (req.url.startsWith('/admin')) {
     const authorized = await auth(req, res);
@@ -32,5 +36,3 @@ const app = async (req, res) => {
     res.end('404 Not Found');
   });
 };
-
-module.exports = app;
