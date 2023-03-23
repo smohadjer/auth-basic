@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Hello World</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+        <p><a href="/admin/">Admin (password protected)</a></p>
+        <p id="test">Invoking a serverless function...</p>
+        <script>
+          try {
+            fetch('api/index.js')
+            .then((response) => response.text())
+            .then((text) => {
+              console.log('text: ', text);
+              document.getElementById('test').innerHTML = text;
+            });
+          } catch(error) {
+            console.log(error);
+          }
+        </script>
+    </body>
+</html>
