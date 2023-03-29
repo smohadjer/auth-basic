@@ -26,6 +26,8 @@ export default async (req, res) => {
     }
   }
 
+  console.log('saeid', req.url);
+
   if (req.url.startsWith('/api')) {
     testApi(req, res);
   }
