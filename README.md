@@ -1,4 +1,4 @@
-Basic Auth example via Vercel middleware and Node.js
+Basic Authentication example via Vercel middleware and Node.js
 
 https://github.com/vercel/examples/tree/main/edge-middleware/basic-auth-password
 
